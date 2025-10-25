@@ -1,16 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Record a Message</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <title>Shhtorytime Recorder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Load Soundbite's embed loader -->
+  <script src="https://cdn.soundbite.so/embed.js" defer></script>
+  <style>
+    html,body { margin:0; height:100%; background:#111; color:#fff; }
+    /* Give the widget space so it doesn't look like a thin bar while loading */
+    [data-soundbite] { min-height: 420px; display:block; }
+  </style>
 </head>
-
-<body style="margin:0;padding:0;">
-
-<!-- Fullscreen iframe embed from Soundbite -->
-<iframe src="https://soundbite.so/record/b262a28f82e42f321d3801d56d2e5b6d"
-        style="border:none;width:100vw;height:100vh;"></iframe>
-
+<body>
+  <!-- This is the ONLY thing you need for the widget -->
+  <div data-soundbite
+       data-soundbite-token="b262a28f82e42f321d3801d56d2e5b6d"></div>
 </body>
 </html>
