@@ -8,13 +8,27 @@
   <script src="https://cdn.soundbite.so/embed.js" defer></script>
   <style>
     html,body { margin:0; height:100%; background:#111; color:#fff; }
-    /* Give the widget space so it doesn't look like a thin bar while loading */
-    [data-soundbite] { min-height: 420px; display:block; }
+    /* ensure you never see a thin white bar while it boots */
+    [data-soundbite]{ min-height: 420px; display:block; }
   </style>
 </head>
 <body>
-  <!-- This is the ONLY thing you need for the widget -->
-  <div data-soundbite
+  <!-- The widget anchor -->
+  <div id="sb-anchor"
+       data-soundbite
        data-soundbite-token="b262a28f82e42f321d3801d56d2e5b6d"></div>
+
+  <!-- Tiny helper to (re)mount once the loader arrives -->
+  <script>
+    (function mountSB(){
+      function go(){ try{ window.Soundbite && window.Soundbite.mountAll && window.Soundbite.mountAll(); }catch(e){ console.error(e); } }
+      if (document.readyState === "complete" || document.readyState === "interactive") go();
+      else document.addEventListener("DOMContentLoaded", go);
+      var tries = 0, t = setInterval(function(){
+        if (++tries > 30) return clearInterval(t);
+        if (window.Soundbite && window.Soundbite.mountAll){ go(); clearInterval(t); }
+      }, 150);
+    })();
+  </script>
 </body>
 </html>
